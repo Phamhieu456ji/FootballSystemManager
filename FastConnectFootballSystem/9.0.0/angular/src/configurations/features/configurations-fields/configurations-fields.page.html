@@ -1,0 +1,35 @@
+<app-configurations-page-layout heading="{{'Field' | localize}}">
+    <div style="display: flex; 
+            align-items: center; 
+            margin-right: calc(0.75rem/* 12px */ * var(--tw-space-x-reverse));
+            margin-left: calc(0.75rem/* 12px */ * calc(1 - var(--tw-space-x-reverse)));
+            ">
+      <div style="position: relative;
+            display: flex;
+            align-items: center;
+            margin-right: calc(0.75rem/* 12px */ * var(--tw-space-x-reverse));
+            margin-left: calc(0.75rem/* 12px */ * calc(1 - var(--tw-space-x-reverse)));
+            ">
+        <div class="absolute left-9 top-[6px]">
+          <i class="fa fa-search text-neutral-400"></i>
+        </div>
+        <input
+          type="text"
+          [formControl]="searchInput"
+          placeholder="{{'Search' | localize}}"
+          class="h-9 pl-9 pt-[6px] placeholder-neutral-400"
+        />
+      </div>
+      <button class="btn-primary btn" (click)="add()">
+        {{'Add' | localize}}
+      </button>
+    </div>
+    <div>
+      <app-fields-grid
+        [items]="fieldService$ | async"
+        (onDelete)="delete($event)"
+        (onEdit)="edit($event)"
+      ></app-fields-grid>
+    </div>
+  </app-configurations-page-layout>
+  
